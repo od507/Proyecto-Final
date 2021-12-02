@@ -1,36 +1,23 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+// Prototipos de Funciones
 int menu(void);
 void opc1(int *arreNums, int cont);
 void ordeArre(int *arreNums,int cont);
+void present();
 
 int main()
 {
+    //Declaracion de variables
     int reg=0;
     int tam=1;
     int i;
-    int *pnum = (int *)malloc(sizeof(int));
+    int *pnum = (int *)malloc(sizeof(int)); //Inicializacion de puntero con espacio para 1 entero
     char sel;
     int opc;
-    //PRESENTACION / PORTADA
-    printf("\t\t\tUniversidad Tecnologica de Panama\n");
-    printf("\t      Facultad de Ingieneria de Sistemas Computacionales\n");
-    printf("\t\t Departamento de programacion de computadoras\n");
-    printf("\n\t\t\t\tPROYECTO FINAL\n\n\n");
-
-    printf("Facilitadora: Msc. Mitzi de Velasquez \t\t Asignatura: Herramientas de Programacion Aplicada 1");
-    printf("\n\nIntegrantes:  - Cedula: \n");
-    printf("Eric Moreno               - Cedula:8-951-1011\n");
-    printf("Jean Eleta                - Cedula:8-980-472\n");
-    printf("Daniel Nunez              - Cedula:8-992-364\n");
-    printf("Jackeline McClean         - Cedula:3-751-1480 \n");
-    printf("Antonio Daniels           - Cedula:3-722-58 \n\n");
-
-    printf("Fecha de entrega: Lunes, 20 de diciembe de 2021 - Hora 10:00\n\n\n");
-
-    system("pause");
-    system("cls"); 
+    
+    present();
     printf("\nBienvenido al programa que ordena los numeros que ingresas ");
     printf("de manera aleatoria.\n");
     if(pnum==NULL)
@@ -139,4 +126,25 @@ void ordeArre(int *arreNums,int cont)
         }
     }
     //printf("\n%d fue ingresado en la posicion %d\n",*(arreNums+tempPos),tempPos);   
+}
+
+void present()
+{
+    printf("\t\t\tUniversidad Tecnologica de Panama\n");
+    printf("\t      Facultad de Ingieneria de Sistemas Computacionales\n");
+    printf("\t\t Departamento de programacion de computadoras\n");
+    printf("\n\t\t\t\tPROYECTO FINAL\n\n\n");
+
+    printf("Facilitadora: Msc. Mitzi de Velasquez \t\t Asignatura: Herramientas de Programacion Aplicada 1");
+    printf("\n\nIntegrantes:                   CEDULA: \n\n");
+    printf("Eric Moreno               - Cedula:8-951-1011\n");
+    printf("Jean Eleta                - Cedula:8-980-472\n");
+    printf("Daniel Nunez              - Cedula:8-992-364\n");
+    printf("Jackeline McClean         - Cedula:3-751-1480 \n");
+    printf("Antonio Daniels           - Cedula:3-722-58 \n\n");
+
+    printf("Fecha de entrega: Lunes, 20 de diciembe de 2021 - Hora 10:00\n\n\n");
+
+    system("pause");
+    system("cls"); 
 }
