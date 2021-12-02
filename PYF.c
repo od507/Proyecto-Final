@@ -12,7 +12,25 @@ int main()
     int i;
     int *pnum = (int *)malloc(sizeof(int));
     char sel;
-    int opc; 
+    int opc;
+    //PRESENTACION / PORTADA
+    printf("\t\t\tUniversidad Tecnologica de Panama\n");
+    printf("\t      Facultad de Ingieneria de Sistemas Computacionales\n");
+    printf("\t\t Departamento de programacion de computadoras\n");
+    printf("\n\t\t\t\tPROYECTO FINAL\n\n\n");
+
+    printf("Facilitadora: Msc. Mitzi de Velasquez \t\t Asignatura: Herramientas de Programacion Aplicada 1");
+    printf("\n\nIntegrantes:  - Cedula: \n");
+    printf("Eric Moreno               - Cedula:8-951-1011\n");
+    printf("Jean Eleta                - Cedula:8-980-472\n");
+    printf("Daniel Nunez              - Cedula:8-992-364\n");
+    printf("Jackeline McClean         - Cedula:3-751-1480 \n");
+    printf("Antonio Daniels           - Cedula:3-722-58 \n\n");
+
+    printf("Fecha de entrega: Lunes, 20 de diciembe de 2021 - Hora 10:00\n\n\n");
+
+    system("pause");
+    system("cls"); 
     printf("\nBienvenido al programa que ordena los numeros que ingresas ");
     printf("de manera aleatoria.\n");
     if(pnum==NULL)
@@ -104,12 +122,14 @@ void opc1(int *arreNums,int cont)
 void ordeArre(int *arreNums,int cont)
 {
     int temp;
+    int tempPos=0;
     int i=0;
     int k=0;
     for(i=0;i<cont;i++)
     {
-        for(k=i+1;k<cont;k++)
+        for(k=0;k<cont;k++)
         {
+
             if(*(arreNums+i)>*(arreNums+k))
             {
                 temp=*(arreNums+i);
@@ -118,4 +138,5 @@ void ordeArre(int *arreNums,int cont)
             }
         }
     }
+    //printf("\n%d fue ingresado en la posicion %d\n",*(arreNums+tempPos),tempPos);   
 }
