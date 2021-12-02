@@ -2,12 +2,15 @@
 #include <stdlib.h>
 
 int menu(void);
-void opc1(int * arreNums, int cont);
+void opc1(int *arreNums, int cont);
+void ordeArre(int *arreNums,int cont);
 
 int main()
 {
     int reg=0;
-    int  *pnum = (int *)malloc(sizeof(int));
+    int tam=1;
+    int i;
+    int *pnum = (int *)malloc(sizeof(int));
     char sel;
     int opc; 
     printf("\nBienvenido al programa que ordena los numeros que ingresas ");
@@ -20,24 +23,41 @@ int main()
     else
     {
         do{
-        system("pause");
-        system("cls");
+        //system("pause");
+        //system("cls");
         opc=menu();
         switch(opc)
         {
-            case 1:opc1(pnum,reg);break;
+            case 1:
+            {
+                opc1(pnum,reg);
+                reg++;
+                ordeArre(pnum,reg);
+                tam++;
+                pnum=(int *)realloc(pnum,tam*sizeof(int));
+                if(pnum == NULL)
+                {
+                    printf("\nEspacio insuficiente en memoria");
+                    break;
+                }
+            }
+            break;
             case 2:break;
             case 3:break;
             case 4:break;
             default:break;
         }
         fflush(stdin);
-        reg++;
         printf("\nDigite \"s\" para continuar, de lo contrario terminaremos de captar datos: ");
         sel=getchar();
         fflush(stdin);
 
     }while(sel == 's');
+    }
+
+    for(i=0;i<reg;i++)
+    {
+        printf("%d\n",*(pnum+i));
     }
     
     return 0;
@@ -54,12 +74,33 @@ int menu(void)
     printf("\n4. Salir\n");
 
     scanf("%d",&sele);
+    fflush(stdin);
     return sele;
 }
 
-void opc1(int * arreNums,int cont)
+void opc1(int *arreNums,int cont)
 {
     printf("\nA continuacion ingresara un numero el cual guardaremos\n");
     printf("\nDigite un numero: ");
     scanf("%d",(arreNums+cont));
+    fflush(stdin);
+}
+
+void ordeArre(int *arreNums,int cont)
+{
+    int temp;
+    int i=0;
+    int k=0;
+    for(i=0;i<cont;i++)
+    {
+        for(k=i+1;k<cont;k++)
+        {
+            if(*(arreNums+i)>*(arreNums+k))
+            {
+                temp=*(arreNums+i);
+                *(arreNums+i)=*(arreNums+k);
+                *(arreNums+k)=temp;
+            }
+        }
+    }
 }
