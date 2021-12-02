@@ -2,29 +2,35 @@
 #include <stdlib.h>
 
 int menu(void);
+void opc1(int * arreNums, int cont);
 
 int main()
 {
-    int num;
     int reg=0;
+    int  *pnum = (int *)malloc(sizeof(int));
     char sel;
     int opc; 
     printf("\nBienvenido al programa que ordena los numeros que ingresas ");
-    printf("de manera aleatoria.");
-    do{
+    printf("de manera aleatoria.\n");
+    if(pnum==NULL)
+    {
+        printf("\nOcurrio un error");
+        printf("\nEspacio insuficiente en memoria");
+    }
+    else
+    {
+        do{
         system("pause");
         system("cls");
         opc=menu();
         switch(opc)
         {
-            case 1:break;
+            case 1:opc1(pnum,reg);break;
             case 2:break;
             case 3:break;
             case 4:break;
             default:break;
         }
-        printf("\nDigite un numero: ");
-        scanf("%d",&num);
         fflush(stdin);
         reg++;
         printf("\nDigite \"s\" para continuar, de lo contrario terminaremos de captar datos: ");
@@ -32,6 +38,8 @@ int main()
         fflush(stdin);
 
     }while(sel == 's');
+    }
+    
     return 0;
 }
 
@@ -47,4 +55,11 @@ int menu(void)
 
     scanf("%d",&sele);
     return sele;
+}
+
+void opc1(int * arreNums,int cont)
+{
+    printf("\nA continuacion ingresara un numero el cual guardaremos\n");
+    printf("\nDigite un numero: ");
+    scanf("%d",(arreNums+cont));
 }
