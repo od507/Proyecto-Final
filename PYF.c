@@ -42,8 +42,27 @@ int main()
                 }
             }
             break;
-            case 2:break;
-            case 3:break;
+            case 2:
+            {
+                system("cls");
+                printf("\n\t\t\tCONTENIDO DEL VECTOR");
+                printf("\nVALOR ALMACENADO\tDIRECCION DE MEMORIA\tPOSICION EN VECTOR\n");
+                if(reg==0)
+                {
+                    printf("No se ha ingresado un numero\t\tDireccion almacenada: %x\n",(pnum+i));
+                }
+                for(i=0;i<reg;i++)
+                {
+                    printf("\t%d\t\t\t%x\t\t%d\n",*(pnum+i),(pnum+i),i);
+                }    
+            }
+            break;
+            case 3:
+            {
+                system("cls");
+                printf("\nEL vector tiene %d elementos",reg);
+            }
+            break;
             case 4:break;
             default:break;
         }
@@ -55,10 +74,6 @@ int main()
     }while(sel == 's');
     }
 
-    for(i=0;i<reg;i++)
-    {
-        printf("%d\n",*(pnum+i));
-    }
     
     return 0;
 }
