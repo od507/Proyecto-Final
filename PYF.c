@@ -109,14 +109,12 @@ void opc1(int *arreNums,int cont)
 void ordeArre(int *arreNums,int cont)
 {
     int temp;
-    int tempPos=0;
     int i=0;
     int k=0;
     for(i=0;i<cont;i++)
     {
-        for(k=0;k<cont;k++)
+        for(k=i+1;k<cont;k++)
         {
-
             if(*(arreNums+i)>*(arreNums+k))
             {
                 temp=*(arreNums+i);
@@ -125,7 +123,6 @@ void ordeArre(int *arreNums,int cont)
             }
         }
     }
-    //printf("\n%d fue ingresado en la posicion %d\n",*(arreNums+tempPos),tempPos);   
 }
 
 void present()
