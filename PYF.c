@@ -109,8 +109,10 @@ void opc1(int *arreNums,int cont)
 void ordeArre(int *arreNums,int cont)
 {
     int temp;
+    int tempPos;
     int i=0;
     int k=0;
+
     for(i=0;i<cont;i++)
     {
         for(k=i+1;k<cont;k++)
@@ -120,9 +122,10 @@ void ordeArre(int *arreNums,int cont)
                 temp=*(arreNums+i);
                 *(arreNums+i)=*(arreNums+k);
                 *(arreNums+k)=temp;
+                tempPos=i;
             }
         }
-    }
+    }  
 }
 
 void present()
