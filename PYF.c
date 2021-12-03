@@ -3,8 +3,9 @@
 
 // Prototipos de Funciones
 int menu(void);
-void opc1(int *arreNums, int cont);
-void ordeArre(int *arreNums,int cont);
+void opc1(int *puntNum);
+void carArre(int *arreNum, int *num, int size);
+void ordArre(int *arrNum, int size);
 void present();
 
 int main()
@@ -12,6 +13,8 @@ int main()
     //Declaracion de variables
     int reg=0;
     int tam=1;
+    int num;
+    int *pn=&num;
     int i;
     int *pnum = (int *)malloc(sizeof(int)); //Inicializacion de puntero con espacio para 1 entero
     char sel;
@@ -20,7 +23,7 @@ int main()
     present();
     printf("\nBienvenido al programa que ordena los numeros que ingresas ");
     printf("de manera aleatoria.\n");
-    if(pnum==NULL)
+    if(pnum==NULL||pn==NULL)
     {
         printf("\nOcurrio un error");
         printf("\nEspacio insuficiente en memoria");
@@ -35,9 +38,10 @@ int main()
         {
             case 1:
             {
-                opc1(pnum,reg);
+                opc1(pn);
+                carArre(pnum,pn,tam);
+                ordArre(pnum,tam);
                 reg++;
-                ordeArre(pnum,reg);
                 tam++;
                 pnum=(int *)realloc(pnum,tam*sizeof(int));
                 if(pnum == NULL)
@@ -76,7 +80,7 @@ int main()
         sel=getchar();
         fflush(stdin);
 
-    }while(sel == 's');
+    }while(sel == 's'|| sel == 'S');
     }
 
     
@@ -98,34 +102,19 @@ int menu(void)
     return sele;
 }
 
-void opc1(int *arreNums,int cont)
+void opc1(int *puntNum)
 {
+    int temp;
     printf("\nA continuacion ingresara un numero el cual guardaremos\n");
     printf("\nDigite un numero: ");
-    scanf("%d",(arreNums+cont));
+    scanf("%d",&temp);
+    *puntNum=temp;
     fflush(stdin);
 }
 
-void ordeArre(int *arreNums,int cont)
+void carArre(int *arreNum, int *num, int size)
 {
-    int temp;
-    int tempPos;
-    int i=0;
-    int k=0;
-
-    for(i=0;i<cont;i++)
-    {
-        for(k=i+1;k<cont;k++)
-        {
-            if(*(arreNums+i)>*(arreNums+k))
-            {
-                temp=*(arreNums+i);
-                *(arreNums+i)=*(arreNums+k);
-                *(arreNums+k)=temp;
-                tempPos=i;
-            }
-        }
-    }  
+    *(arreNum+(size-1))=*num;
 }
 
 void present()
@@ -147,4 +136,25 @@ void present()
 
     system("pause");
     system("cls"); 
+}
+
+void ordArre(int *arrNum, int size)
+{
+    int i;
+    int j;
+    int temp;
+    if(size>1)
+    {
+        for(i=1;i<size;i++)
+        {
+        temp=*(arrNum+i);
+        j=i-1;
+        while(j>=0 && *(arrNum+i)>temp)
+        {
+            *(arrNum+j+1)=*(arrNum+j);
+            j=j-i;
+        }
+        *(arrNum+j+1)=temp;
+        }
+    }
 }
