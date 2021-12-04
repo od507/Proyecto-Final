@@ -29,8 +29,8 @@ int main()
     else
     {
         do{
-        //system("pause");
-        //system("cls");
+        system("pause");
+        system("cls");
         opc=menu();
         switch(opc)
         {
@@ -48,6 +48,7 @@ int main()
                     break;
                 }
             }
+            sel='s';
             break;
             case 2:
             {
@@ -63,20 +64,25 @@ int main()
                     printf("\t%d\t\t\t%x\t\t%d\n",*(pnum+i),(pnum+i),i);
                 }    
             }
+            sel='s';
             break;
             case 3:
             {
                 system("cls");
-                printf("\nEL vector tiene %d elementos",reg);
+                printf("\nEL vector tiene %d elementos\n+",reg);
+            }
+            sel='s';
+            break;
+            case 4:sel='n';break;
+            default:
+            {
+                printf("\nEleccion Incorrecta");
+                printf("\nRetornara al menu principal");
+                system("pause");
+                sel='s';
             }
             break;
-            case 4:break;
-            default:break;
         }
-        fflush(stdin);
-        printf("\nDigite \"s\" para continuar, de lo contrario terminaremos de captar datos: ");
-        sel=getchar();
-        fflush(stdin);
     }while(sel == 's');
     }
     
@@ -151,15 +157,15 @@ void posi(int *arre, int size, int *numPos)
         {
             if(i==0)
             {
-                printf("%d se ingresa al inicio del vector",*(numPos));
+                printf("%d se ingresa al inicio del vector\n",*(numPos));
             }
             else if(i==(size-1))
             {
-                printf("%d se ingresa al final del vector",*(numPos));
+                printf("%d se ingresa al final del vector\n",*(numPos));
             }
             else
             {
-                printf("%d se ingresa en la posicion %d",*(numPos),i);
+                printf("%d se ingresa en la posicion %d\n",*(numPos),i);
             }
         }
     }
