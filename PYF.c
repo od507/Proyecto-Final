@@ -69,7 +69,7 @@ int main()
             case 3:
             {
                 system("cls");
-                printf("\nEL vector tiene %d elementos\n+",reg);
+                printf("\nEL vector tiene %d elementos\n",reg);
             }
             sel='s';
             break;
