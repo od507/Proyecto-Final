@@ -109,9 +109,9 @@ void opc1(int *arreNums,int cont,int *dig)
     char num[4];
     printf("\nA continuacion ingresara un numero el cual guardaremos\n");
     printf("\nDigite un numero: ");
-    fgets(num,4,stdin);
+    fgets(num,4,stdin); //Capturamos los datos como caracteres para validarlos
     *(arreNums+cont)=atoi(num);
-    if(atoi(num)==0)
+    if(atoi(num)==0) // Maneja casos en los que el usuario introdujo letras o el "0"
     {
         printf("\nNuestro programa solamente acepta numeros, usted digito una letra");
         printf(" o selecciono el numero \"0\"\n");
