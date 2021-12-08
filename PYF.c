@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 
 // Prototipos de Funciones
 int menu(void);
@@ -41,6 +42,12 @@ int main()
                 reg++;
                 ordeArre(pnum,reg);
                 posi(pnum,tam,pnumGua);
+                printf("\nVector Actualizado");
+                for(i=0;i<reg;i++)
+                {
+                    printf("\n%d",*(pnum+i));
+                }
+                printf("\n");
                 tam++;
                 pnum=(int *)realloc(pnum,tam*sizeof(int)); //Incrementa el tamaño del arreglo en 1 unidad más para entero
                 if(pnum == NULL)
@@ -54,14 +61,14 @@ int main()
             {
                 system("cls");
                 printf("\n\t\t\tCONTENIDO DEL VECTOR");
-                printf("\nVALOR ALMACENADO\tDIRECCION DE MEMORIA\tPOSICION EN VECTOR\n");
+                printf("\nVALOR ALMACENADO\tDIRECCION DE MEMORIA\t\tPOSICION EN VECTOR\n");
                 if(reg==0)
                 {
                     printf("No se ha ingresado un numero\t\tDireccion almacenada: %x\n",(pnum+i));
                 }
                 for(i=0;i<reg;i++)
                 {
-                    printf("\t%d\t\t\t%x\t\t%d\n",*(pnum+i),(pnum+i),i);
+                    printf("\t%d\t\t\t%x\t\t\t%d\n",*(pnum+i),(pnum+i),i);
                 }    
             }
             break;
@@ -77,7 +84,6 @@ int main()
                 printf("\nEleccion Incorrecta");
                 printf("\nRetornara al menu principal");
                 system("pause");
-                sel='s';
             }
             break;
         }
@@ -100,9 +106,17 @@ int menu(void)
 }
 void opc1(int *arreNums,int cont,int *dig)
 {
+    char num[4];
     printf("\nA continuacion ingresara un numero el cual guardaremos\n");
     printf("\nDigite un numero: ");
-    scanf("%d",(arreNums+cont));
+    fgets(num,4,stdin);
+    *(arreNums+cont)=atoi(num);
+    if(atoi(num)==0)
+    {
+        printf("\nNuestro programa solamente acepta numeros, usted digito una letra");
+        printf(" o selecciono el numero \"0\"\n");
+        printf("\nProcederemos a ingresar un \"0\" al arreglo\n");
+    }
     *dig=*(arreNums+cont);
     fflush(stdin);
 }
