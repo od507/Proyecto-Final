@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+
 // Prototipos de Funciones
 int menu(void);
 void opc1(int *arreNums, int cont, int *dig);
@@ -9,19 +10,19 @@ void posi(int *arre, int size, int *numPos);
 int main()
 {
     //Declaracion de variables
-    int reg=0;
-    int tam=1;
-    int numGua;
-    int *pnumGua=&numGua;
+    int reg=0; // Mantiene la cantidad de posiciones que lleva el arreglo
+    int tam=1; // Guarda el tamaño del arreglo
+    int numGua;    
+    int *pnumGua=&numGua; 
     int i;
     int *pnum = (int *)malloc(sizeof(int)); //Inicializacion de puntero con espacio para 1 entero
-    char sel;
+    char sel='s';
     int opc;
     
     present();
     printf("\nBienvenido al programa que ordena los numeros que ingresas ");
     printf("de manera aleatoria.\n");
-    if(pnum==NULL)
+    if(pnum==NULL) // Controla caso de que no haya espacio en memoria
     {
         printf("\nOcurrio un error");
         printf("\nEspacio insuficiente en memoria");
@@ -41,14 +42,13 @@ int main()
                 ordeArre(pnum,reg);
                 posi(pnum,tam,pnumGua);
                 tam++;
-                pnum=(int *)realloc(pnum,tam*sizeof(int));
+                pnum=(int *)realloc(pnum,tam*sizeof(int)); //Incrementa el tamaño del arreglo en 1 unidad más para entero
                 if(pnum == NULL)
                 {
                     printf("\nEspacio insuficiente en memoria");
                     break;
                 }
             }
-            sel='s';
             break;
             case 2:
             {
@@ -64,16 +64,14 @@ int main()
                     printf("\t%d\t\t\t%x\t\t%d\n",*(pnum+i),(pnum+i),i);
                 }    
             }
-            sel='s';
             break;
             case 3:
             {
                 system("cls");
                 printf("\nEL vector tiene %d elementos\n",reg);
             }
-            sel='s';
             break;
-            case 4:sel='n';break;
+            case 4:sel='n';break; //Cambia el valor para salir del bucle
             default:
             {
                 printf("\nEleccion Incorrecta");
@@ -110,8 +108,12 @@ void opc1(int *arreNums,int cont,int *dig)
 }
 void ordeArre(int *arreNums,int cont)
 {
+    /*Toma como parametro el puntero hacia la primera posicio del arreglo
+    compara la posicón anterior con la que sigue y en caso de que sea mayor la corre
+    usando una variable auxiliar para no borrar ningún elemento
+    Se vale de dos bucles, el interno recorriendo más rápido el arreglo y partiendo de la 
+    posicion adyacente a la primera*/
     int temp;
-    int tempPos;
     int i=0;
     int k=0;
 
@@ -124,7 +126,6 @@ void ordeArre(int *arreNums,int cont)
                 temp=*(arreNums+i);
                 *(arreNums+i)=*(arreNums+k);
                 *(arreNums+k)=temp;
-                tempPos=i;
             }
         }
     }
@@ -150,6 +151,13 @@ void present()
 
 void posi(int *arre, int size, int *numPos)
 {
+    /*Toma como parametro el arreglo, el tamaño del mismo (lo corremos
+    antes de incrementar el tamaño del mismo) y el numero que acabamos de agregar al
+    arreglo. Recorre el arreglo con un bucle que va desde la posición inicial hasta
+    la ultima posición en ese momento comparanto el contenido de cada posición con el
+    numero que acabamos de agregar y una vez lo encuentra usa el iterador para saber
+    si está al incio, final o la posición precisa en la que se encuentra.
+    */
     int i;
     for(i=0;i<size;i++)
     {
