@@ -122,7 +122,7 @@ void opc1(int *arreNums,int cont,int *dig)
 }
 void ordeArre(int *arreNums,int cont)
 {
-    /*Toma como parametro el puntero hacia la primera posicio del arreglo
+    /*Toma como parametro el puntero hacia la primera posicion del arreglo
     compara la posicón anterior con la que sigue y en caso de que sea mayor la corre
     usando una variable auxiliar para no borrar ningún elemento
     Se vale de dos bucles, el interno recorriendo más rápido el arreglo y partiendo de la 
@@ -168,7 +168,7 @@ void posi(int *arre, int size, int *numPos)
     /*Toma como parametro el arreglo, el tamaño del mismo (lo corremos
     antes de incrementar el tamaño del mismo) y el numero que acabamos de agregar al
     arreglo. Recorre el arreglo con un bucle que va desde la posición inicial hasta
-    la ultima posición en ese momento comparanto el contenido de cada posición con el
+    la ultima posición en ese momento comparando el contenido de cada posición con el
     numero que acabamos de agregar y una vez lo encuentra usa el iterador para saber
     si está al incio, final o la posición precisa en la que se encuentra.
     */
