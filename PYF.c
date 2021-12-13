@@ -68,7 +68,7 @@ int main()
                 }
                 for(i=0;i<reg;i++)
                 {
-                    printf("\t%d\t\t\t%x\t\t\t%d\n",*(pnum+i),(pnum+i),i);
+                    printf("\t%d\t\t\t%f\t\t\t%d\n",*(pnum+i),(pnum+i),i);
                 }    
             }
             break;
@@ -115,7 +115,9 @@ void opc1(int *arreNums,int cont,int *dig)
     {
         printf("\nNuestro programa solamente acepta numeros, usted digito una letra");
         printf(" o selecciono el numero \"0\"\n");
-        printf("\nProcederemos a ingresar un \"0\" al arreglo\n");
+        system("\npause\n");
+        printf("\nProcederemos a cerrar el programa, vuelva a intentarlo luego\n");
+        exit(0);
     }
     *dig=*(arreNums+cont);
     fflush(stdin);
