@@ -68,7 +68,7 @@ int main()
                 }
                 for(i=0;i<reg;i++)
                 {
-                    printf("\t%d\t\t\t%f\t\t\t%d\n",*(pnum+i),(pnum+i),i);
+                    printf("\t%d\t\t\t%x\t\t\t%d\n",*(pnum+i),(pnum+i),i);
                 }    
             }
             break;
